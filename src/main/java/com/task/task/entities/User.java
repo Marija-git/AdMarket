@@ -31,4 +31,6 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ad> ads;
 
+    @Column(nullable = false)
+    private String role = "ROLE_USER";
 }

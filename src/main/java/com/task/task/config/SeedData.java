@@ -1,5 +1,4 @@
 package com.task.task.config;
-
 import com.task.task.entities.Ad;
 import com.task.task.entities.User;
 import com.task.task.enums.Category;
@@ -9,19 +8,20 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
+import org.springframework.security.crypto.password.PasswordEncoder;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@Configuration // ✅ Ovo je Spring konfiguraciona klasa
-@RequiredArgsConstructor // ✅ Lombok generiše konstruktor za final polja
+@Configuration
+@RequiredArgsConstructor
 public class SeedData {
 
     private final IUserRepository userRepository;
     private final IAdRepository adRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Bean
     public CommandLineRunner seedDatabase() {
@@ -32,8 +32,9 @@ public class SeedData {
                 for (int i = 1; i <= 10; i++) {
                     User user = User.builder()
                             .username("user" + i)
-                            .password("password" + i)
+                            .password(passwordEncoder.encode("password" + i))
                             .phone("06012345" + i)
+                            .role("ROLE_USER")
                             .registrationDate(LocalDate.now().minusDays(i))
                             .build();
                     users.add(userRepository.save(user));
@@ -60,7 +61,7 @@ public class SeedData {
                 }
 
                 adRepository.saveAll(ads);
-                System.out.println("✅ Seeded 10 users and 100 ads.");
+                System.out.println("Seeded 10 users and 100 ads.");
             }
         };
     }

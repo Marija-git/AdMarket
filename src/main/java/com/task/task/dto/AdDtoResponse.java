@@ -10,4 +10,5 @@ public class AdDtoResponse {
     private BigDecimal price;
     private String city;
     private Category category;
+    private String ownerUsername;
 }
