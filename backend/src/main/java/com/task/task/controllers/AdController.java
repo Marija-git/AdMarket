@@ -1,5 +1,4 @@
 package com.task.task.controllers;
-import com.task.task.dto.AdDtoDetailResponse;
 import com.task.task.dto.AdDtoRequest;
 import com.task.task.dto.AdDtoResponse;
 import com.task.task.entities.Ad;
@@ -37,23 +36,23 @@ public class AdController {
     }
 
     @GetMapping("/{id}")
-    public AdDtoDetailResponse getAdById(@PathVariable Long id) {
+    public AdDtoResponse getAdById(@PathVariable Long id) {
         return adService.getById(id);
     }
 
 
     @PostMapping
-    public AdDtoDetailResponse createAd(@Valid @RequestBody AdDtoRequest request) {
+    public AdDtoResponse createAd(@Valid @RequestBody AdDtoRequest request) {
         Ad ad = adMapper.fromRequest(request);
         Ad saved = adService.createAd(ad);
-        return adMapper.toDetailDto(saved);
+        return adMapper.toDto(saved);
     }
 
     @PutMapping("/{id}")
-    public AdDtoDetailResponse updateAd(@PathVariable Long id, @RequestBody AdDtoRequest request) {
+    public AdDtoResponse updateAd(@PathVariable Long id, @RequestBody AdDtoRequest request) {
         Ad adToUpdate = adMapper.fromRequest(request);
         Ad updated = adService.updateAd(id, adToUpdate);
-        return adMapper.toDetailDto(updated);
+        return adMapper.toDto(updated);
     }
 
     @DeleteMapping("/{id}")

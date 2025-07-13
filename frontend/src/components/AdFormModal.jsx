@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 const AdFormModal = ({ ad, onClose, onSubmit }) => {
 	const [formData, setFormData] = useState({
@@ -37,101 +36,89 @@ const AdFormModal = ({ ad, onClose, onSubmit }) => {
 	};
 
 	return (
-		<div
-			className='modal fade'
-			id='adFormModal'
-			tabIndex='-1'>
-			<div className='modal-dialog'>
-				<div className='modal-content'>
-					<div className='modal-header'>
-						<h5 className='modal-title'>{ad ? "Edit Ad" : "Add New Ad"}</h5>
-						<button
-							type='button'
-							className='btn-close'
-							data-bs-dismiss='modal'
-							onClick={onClose}></button>
-					</div>
-					<form
-						onSubmit={handleSubmit}
-						className='modal-body'>
-						<input
-							type='text'
-							className='form-control mb-2'
-							name='title'
-							placeholder='Title'
-							value={formData.title}
-							onChange={handleChange}
-							required
-						/>
-						<textarea
-							className='form-control mb-2'
-							name='description'
-							placeholder='Description'
-							value={formData.description}
-							onChange={handleChange}
-							required
-						/>
-						<input
-							type='url'
-							className='form-control mb-2'
-							name='imageUrl'
-							placeholder='Image URL'
-							value={formData.imageUrl}
-							onChange={handleChange}
-						/>
-						<input
-							type='number'
-							className='form-control mb-2'
-							name='price'
-							placeholder='Price'
-							value={formData.price}
-							onChange={handleChange}
-							required
-						/>
-						<select
-							className='form-select mb-2'
-							name='category'
-							value={formData.category}
-							onChange={handleChange}
-							required>
-							<option value=''>Select category</option>
-							<option value='clothing'>Clothing</option>
-							<option value='tools'>Tools</option>
-							<option value='sports'>Sports</option>
-							<option value='accessories'>Accessories</option>
-							<option value='furniture'>Furniture</option>
-							<option value='pets'>Pets</option>
-							<option value='games'>Games</option>
-							<option value='books'>Books</option>
-							<option value='technology'>Technology</option>
-						</select>
-						<input
-							type='text'
-							className='form-control mb-2'
-							name='city'
-							placeholder='City'
-							value={formData.city}
-							onChange={handleChange}
-							required
-						/>
-						<div className='modal-footer'>
-							<button
-								type='submit'
-								className='btn btn-primary'>
-								{ad ? "Update" : "Add"}
-							</button>
-							<button
-								type='button'
-								className='btn btn-secondary'
-								data-bs-dismiss='modal'
-								onClick={onClose}>
-								Cancel
-							</button>
-						</div>
-					</form>
-				</div>
+		<form onSubmit={handleSubmit}>
+			<h4 className='mb-3'>{ad?.id ? "Edit Ad" : "Add New Ad"}</h4>
+
+			<input
+				type='text'
+				name='title'
+				className='form-control mb-2'
+				placeholder='Title'
+				value={formData.title}
+				onChange={handleChange}
+				required
+			/>
+
+			<textarea
+				name='description'
+				className='form-control mb-2'
+				placeholder='Description'
+				value={formData.description}
+				onChange={handleChange}
+				required
+			/>
+
+			<input
+				type='url'
+				name='imageUrl'
+				className='form-control mb-2'
+				placeholder='Image URL'
+				value={formData.imageUrl}
+				onChange={handleChange}
+			/>
+
+			<input
+				type='number'
+				name='price'
+				className='form-control mb-2'
+				placeholder='Price'
+				value={formData.price}
+				onChange={handleChange}
+				required
+			/>
+
+			<select
+				name='category'
+				className='form-select mb-2'
+				value={formData.category}
+				onChange={handleChange}
+				required>
+				<option value=''>Select category</option>
+				<option value='CLOTHING'>CLOTHING</option>
+				<option value='TOOLS'>TOOLS</option>
+				<option value='SPORTS'>SPORTS</option>
+				<option value='ACCESSORIES'>ACCESSORIES</option>
+				<option value='FURNITURE'>FURNITURE</option>
+				<option value='PETS'>PETS</option>
+				<option value='GAMES'>GAMES</option>
+				<option value='BOOKS'>BOOKS</option>
+				<option value='TECHNOLOGY'>TECHNOLOGY</option>
+			</select>
+
+			<input
+				type='text'
+				name='city'
+				className='form-control mb-2'
+				placeholder='City'
+				value={formData.city}
+				onChange={handleChange}
+				required
+			/>
+
+			<div className='d-flex justify-content-end mt-3'>
+				<button
+					type='submit'
+					className='btn btn-primary me-2'>
+					{ad?.id ? "Update" : "Add"}
+				</button>
+				<button
+					type='button'
+					className='btn btn-secondary'
+					onClick={onClose}>
+					Cancel
+				</button>
 			</div>
-		</div>
+		</form>
 	);
 };
 

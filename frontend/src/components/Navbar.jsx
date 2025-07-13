@@ -1,8 +1,14 @@
 import React from "react";
-import useAuthUI from "../scripts/useAuthUI";
+import { logout } from "../store/AuthSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Navbar = ({ onAddAd }) => {
-	const { isLoggedIn, username } = useAuthUI();
+	const dispatch = useDispatch();
+	const { isAuthenticated, username } = useSelector((state) => state.auth);
+
+	const handleLogout = () => {
+		dispatch(logout());
+	};
 	return (
 		<>
 			{/* Navbar */}
@@ -14,23 +20,19 @@ const Navbar = ({ onAddAd }) => {
 						AdMarket
 					</a>
 					<div>
-						{isLoggedIn ? (
+						{isAuthenticated ? (
 							<>
-								<span className='navbar-text text-white me-2'>{username}</span>
+								<span className='navbar-text text-white me-2'>
+									{username || "unknown user"}
+								</span>
 								<button
 									className='btn btn-outline-light'
-									data-bs-toggle='modal'
-									data-bs-target='#adFormModal'
 									onClick={onAddAd}>
 									Add Ad
 								</button>
 								<button
 									className='btn btn-light ms-1'
-									onClick={() => {
-										localStorage.removeItem("authToken");
-										localStorage.getItem("username");
-										window.location.href = "/"; // Redirect to login
-									}}>
+									onClick={handleLogout}>
 									Logout
 								</button>
 							</>

@@ -1,5 +1,4 @@
 package com.task.task.mapper;
-import com.task.task.dto.AdDtoDetailResponse;
 import com.task.task.dto.AdDtoRequest;
 import com.task.task.dto.AdDtoResponse;
 import com.task.task.dto.UserDtoResponse;
@@ -13,9 +12,8 @@ import org.mapstruct.MappingTarget;
 public interface AdMapper {
 
     @Mapping(source = "user.username", target = "ownerUsername")
+    @Mapping(source = "user.phone", target = "phone")
     AdDtoResponse toDto(Ad ad);
-
-    AdDtoDetailResponse toDetailDto(Ad ad);
 
     Ad fromRequest(AdDtoRequest request);
 

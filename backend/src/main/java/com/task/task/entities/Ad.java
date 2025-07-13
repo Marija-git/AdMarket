@@ -23,7 +23,7 @@ public class Ad {
     @Column(length = 1000)
     private String description;
 
-    @Column(nullable = false)
+    @Column
     private String imageUrl;
 
     @Column(nullable = false)

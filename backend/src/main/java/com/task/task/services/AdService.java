@@ -1,5 +1,4 @@
 package com.task.task.services;
-import com.task.task.dto.AdDtoDetailResponse;
 import com.task.task.dto.AdDtoResponse;
 import com.task.task.entities.Ad;
 import com.task.task.entities.User;
@@ -74,10 +73,10 @@ public class AdService implements IAdService {
     }
 
     @Override
-    public AdDtoDetailResponse getById(Long id) {
+    public AdDtoResponse getById(Long id) {
         Ad ad = adRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Ad with ID " + id + " not found"));
-        return adMapper.toDetailDto(ad);
+        return adMapper.toDto(ad);
     }
 
     @Override
