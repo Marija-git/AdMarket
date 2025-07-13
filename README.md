@@ -146,3 +146,11 @@ On the /homepage page, you'll find:
 - [ ] **Error display on frontend** – use Toast to display errors returned by the backend for better user experience.
 - [ ] **Improve backend error handling** – more detailed messages, status codes, and validation to support proper frontend display.
 - [ ] **Console errors and warnings** – remove all warnings and errors from the frontend console.
+
+### Screenshots
+- <img width="823" height="439" alt="Image" src="https://github.com/user-attachments/assets/1b4b75d7-a3cf-47a9-a486-6f6a878b9506" />
+- <img width="785" height="495" alt="Image" src="https://github.com/user-attachments/assets/75de27d9-0edc-4e5e-b2e7-9540e35949e4" />
+- <img width="1889" height="843" alt="Image" src="https://github.com/user-attachments/assets/815d8b8d-104b-4850-9c3e-553aa735b2d6" />
+- <img width="1462" height="438" alt="Image" src="https://github.com/user-attachments/assets/63058d72-cd59-4cd6-9bbb-5681a9200f30" />
+- <img width="1105" height="778" alt="Image" src="https://github.com/user-attachments/assets/b7492d89-e0cb-4162-833a-8159405d93d3" />
+- <img width="1339" height="787" alt="Image" src="https://github.com/user-attachments/assets/3073776b-872c-4707-b8ca-750e59b0a926" />
